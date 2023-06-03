@@ -28,24 +28,25 @@
                         <table id="dataListTable" class="table table-bordered" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="sortOrder" id="ascending" value="asc" checked>
-                                            <label class="form-check-label" for="ascending">
-                                                Ascending
-                                            </label>
+                                    <td colspan="2" class="align-middle text-start">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="sortOrder" id="ascending" value="asc" checked>
+                                                    <label class="form-check-label" for="ascending">Ascending</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="sortOrder" id="descending" value="desc">
+                                                    <label class="form-check-label" for="descending">Descending</label>
+                                                </div>
+                                            </div>
                                         </div>
-
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="sortOrder" id="descending" value="desc">
-                                            <label class="form-check-label" for="descending">
-                                                Descending
-                                            </label>
-                                        </div>
-                                    </th>
-                                    <th>
+                                    </td>
+                                    <td class="text-center">
                                         <button id="sortButton" class="btn btn-primary">Go</button>
-                                    </th>
+                                    </td>
                                 </tr>
 
                                 <tr>
@@ -78,7 +79,7 @@
                                             <td class="align-middle text-left"><?= $d['b_bakar']; ?></td>
                                             <td class="align-middle text-left"><?= convert2idr($d['harga']); ?></td>
 
-                                            <td class="align-middle text-left">
+                                            <td class="text-center justify-content-center align-middle">
                                                 <?php if ($d['gambar']) { ?>
                                                     <img src="<?= $d['gambar']; ?>" alt="Image" width="100">
                                                 <?php } else { ?>
