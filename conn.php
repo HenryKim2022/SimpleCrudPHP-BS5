@@ -1,4 +1,6 @@
 <?php
+include "get_baseurl.php";
+
 $servername = "localhost";
 $username = "root";
 $password = "";

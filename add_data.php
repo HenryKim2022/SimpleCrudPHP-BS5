@@ -7,4 +7,4 @@ $alamat = $_POST['addrInput'];
 
 mysqli_query($conn, "INSERT INTO tbl_mahasiswa VALUES('','$nama','$nrp','$alamat')");
 
-header("location:index.php");
+header("location:" . $Base_Url);

@@ -8,4 +8,4 @@ $alamat = $_POST['addrInput'];
 
 mysqli_query($conn, "UPDATE tbl_mahasiswa SET nama_mhs='$nama', nrp='$nrp', alamat='$alamat' WHERE id='$id'");
 
-header("location:index.php");
+header("location:" . $Base_Url);
