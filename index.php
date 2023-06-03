@@ -23,19 +23,6 @@
                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDataModal">Add Data</button>
                 </div>
                 <div class="card-body">
-                    <style>
-                        /* TABLE SCROOL-X */
-                        .table-container {
-                            width: 100%;
-                            overflow-x: auto;
-                        }
-
-                        thead {
-                            background-color: #6c757d;
-                            color: white;
-                        }
-                    </style>
-
                     <div class="table-container">
 
                         <table id="dataListTable" class="table table-bordered" width="100%" cellspacing="0">
@@ -161,101 +148,54 @@
                             <div class="row">
                                 <!-- Group Logo  -->
                                 <div class="col-xl-12 col-md-6 mb-4 justify-content-center">
-                                    <!-- <div class="card border-left-primary shadow h-100 py-2"> -->
-                                    <div class="card-body">
-                                        <style>
-                                            .Group3Logo {
-                                                text-align: right;
-                                            }
-                                        </style>
-                                        <div class="row">
-                                            <div class="col-5 mr-2 Group3Logo">
-                                                <table>
-                                                    <tr>
-                                                        <td class="d-flex align-content-sm-between justify-content-end align-middle">
-                                                            <img src="/img/logo.png" alt="SiteLogo" style="height: 42%; width: 32%">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="text-xs font-weight-bold text-uppercase mb-1 mt-1 justify-content-center" style="color:#f6503b;">
-                                                                <a>
-                                                                    <b><?= $Institut_Name ?></b>
-                                                                </a>
-                                                                <div class="text-xs font-weight-lighter text-uppercase mb-1 mt-1">
-                                                                    <a><i><?= $Site_Name ?></i></a>
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-5 mr-2 Group3Logo">
+                                                    <table>
+                                                        <tr>
+                                                            <td class="d-flex align-content-sm-between justify-content-end align-middle">
+                                                                <img src="/img/logo.png" alt="SiteLogo" style="height: 42%; width: 32%">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="text-xs font-weight-bold text-uppercase mb-1 mt-1 justify-content-center" style="color:#f6503b;">
+                                                                    <a>
+                                                                        <b><?= $Institut_Name ?></b>
+                                                                    </a>
+                                                                    <div class="text-xs font-weight-lighter text-uppercase mb-1 mt-1">
+                                                                        <a><i><?= $Site_Name ?></i></a>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
 
 
 
-                                            </div>
-                                            <div class="col-6">
-                                                <!-- <i class="fas fa-calendar fa-2x text-gray-300"></i> -->
-                                                <div class="text-md text-green font-weight-bold text-uppercase mb-1">
-                                                    <a class="text-orange">
-                                                        Made By:
-                                                    </a>
                                                 </div>
+                                                <div class="col-6">
+                                                    <!-- <i class="fas fa-calendar fa-2x text-gray-300"></i> -->
+                                                    <div class="text-md text-green font-weight-bold text-uppercase mb-1">
+                                                        <a class="text-orange">
+                                                            Made By:
+                                                        </a>
+                                                    </div>
 
-                                                <style>
-                                                    .cust-ul {
-                                                        list-style-type: none;
-                                                        /* margin-left: 2.5em; */
-                                                    }
+                                                    <div class="cust-ul pl-0 ml-4 grad-txt-2 text-md">
+                                                        <span>
+                                                            <i class="cust-j fad fa-laptop-code"></i>
+                                                            Programmer | <i class="fa-duotone fa-arrow-right-from-arc"></i>
+                                                            Hendri (1152125001)
+                                                        </span>
+                                                    </div>
 
-                                                    .grad-txt-1 {
-                                                        /* font-size: 72px; */
-                                                        background: -webkit-linear-gradient(#4f78ef, #7a3aeb);
-                                                        -webkit-background-clip: text;
-                                                        /* -webkit-text-fill-color: transparent; */
-                                                    }
-
-                                                    .grad-txt-2 {
-                                                        /* font-size: 72px; */
-                                                        background: -webkit-linear-gradient(#4f78ef, #7a3aeb);
-                                                        -webkit-background-clip: text;
-                                                        /* -webkit-text-fill-color: transparent; */
-                                                    }
-
-
-                                                    .cust-u {
-                                                        text-decoration: underline;
-                                                        text-underline-position: under;
-                                                        text-decoration-color: #f75139;
-                                                    }
-
-                                                    .text-green {
-                                                        color: green;
-                                                    }
-
-                                                    .text-orange {
-                                                        color: #f75139;
-                                                    }
-
-                                                    .cust-ul .cust-j {
-                                                        color: #f75139;
-                                                        display: inline-block;
-                                                        margin-right: 5px;
-                                                    }
-                                                </style>
-
-                                                <div class="cust-ul pl-0 ml-4 grad-txt-2 text-md">
-                                                    <span>
-                                                        <i class="cust-j fad fa-laptop-code"></i>
-                                                        Programmer | <i class="fa-duotone fa-arrow-right-from-arc"></i>
-                                                        Hendri (1152125001)
-                                                    </span>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                                 </div>
-
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- </div> -->
                                 </div>
 
 

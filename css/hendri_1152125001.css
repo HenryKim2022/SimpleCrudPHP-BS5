@@ -38,3 +38,64 @@ body {
         font-size: 1.2rem;
     }
 }
+
+
+
+
+
+/*  */
+/* ABOUT PART */
+.Group3Logo {
+    text-align: right;
+}
+
+.cust-ul {
+    list-style-type: none;
+}
+
+.grad-txt-1 {
+    background: -webkit-linear-gradient(#4f78ef, #7a3aeb);
+    -webkit-background-clip: text;
+}
+
+.grad-txt-2 {
+    background: -webkit-linear-gradient(#4f78ef, #7a3aeb);
+    -webkit-background-clip: text;
+}
+
+.cust-u {
+    text-decoration: underline;
+    text-underline-position: under;
+    text-decoration-color: #f75139;
+}
+
+.text-green {
+    color: green;
+}
+
+.text-orange {
+    color: #f75139;
+}
+
+.cust-ul .cust-j {
+    color: #f75139;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+
+
+
+
+/*  */
+/* TABLES PART */
+/* TABLE SCROOL-X: OVERFLOW (REQ: div class="table-container encap the <table>") */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+thead {
+    background-color: #6c757d;
+    color: white;
+}
