@@ -1,6 +1,6 @@
 <?php include 'conn.php';
 $action = "";
-
+include "indorupiah.php";
 
 if (isset($_POST['action'])) {
     if ($_POST['action'] == "EDIT") {

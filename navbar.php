@@ -163,9 +163,9 @@
                 </li> -->
             </ul>
 
-            <!-- <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
-                <li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="https://github.com/HenryKim2022/"><i class="fab fa-github-square mr-2"></i> GitHub</a></li>
+                <!-- <li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"> Dropdown right </a>
                     <ul class="dropdown-menu dropdown-menu-right">
@@ -181,8 +181,8 @@
                         </li>
                         <li><a class="dropdown-item" href="#"> Dropdown item 4 </a></li>
                     </ul>
-                </li>
-            </ul> -->
+                </li> -->
+            </ul>
 
         </div> <!-- navbar-collapse.// -->
     </div> <!-- container-fluid.// -->
