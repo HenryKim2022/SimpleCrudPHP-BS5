@@ -76,7 +76,14 @@
                                             <td class="align-middle text-left"><?= $d['merk']; ?></td>
                                             <td class="align-middle text-left"><?= $d['seri']; ?></td>
                                             <td class="align-middle text-left"><?= $d['tahun']; ?></td>
-                                            <td class="align-middle text-left"><?= $d['b_bakar']; ?></td>
+                                            <td class="align-middle text-left">
+                                                <?php if ($d['b_bakar'] == 1) {
+                                                    echo "Gasoline";
+                                                } else if ($d['b_bakar'] == 2) {
+                                                    echo "Diesel";
+                                                } else {
+                                                    echo "Eletric";
+                                                } ?></td>
                                             <td class="align-middle text-left"><?= convert2idr($d['harga']); ?></td>
 
                                             <td class="text-center justify-content-center align-middle">
@@ -163,12 +170,24 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="yearInput" class="form-label">Year</label>
-                                    <input type="text" class="form-control" id="yearInput" name="yearInput" placeholder="Enter year" required>
+                                    <input type="number" class="form-control" id="yearInput" name="yearInput" placeholder="Enter year" min="1900" max="2099" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="fuelInput" class="form-label">Fuel</label>
-                                    <input type="text" class="form-control" id="fuelInput" name="fuelInput" placeholder="Enter fuel" required>
+                                    <label for="inputFuel">Fuel</label>
+                                    <div class="input-group">
+                                        <select class="form-control" id="fuelInput" name="fuelInput" required>
+                                            <option value="1" selected>Gasoline</option>
+                                            <option value="2">Diesel</option>
+                                            <option value="3">Electric</option>
+                                        </select>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button" onclick="toggleSelectOptions()">
+                                                <i id="arrowIcon" class="fas fa-chevron-down"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <div class="mb-3">
                                     <label for="priceInput" class="form-label">Price</label>
                                     <input type="number" class="form-control" id="priceInput" name="priceInput" placeholder="Enter price" required>

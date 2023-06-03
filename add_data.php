@@ -19,7 +19,17 @@ if (isset($_FILES['imageInput']) && $_FILES['imageInput']['error'] === UPLOAD_ER
     // Move the uploaded file to the specified directory
     if (move_uploaded_file($_FILES['imageInput']['tmp_name'], $filePath)) {
         // Save the image path to the database
-        $sql = "INSERT INTO tb_katalog_mobil (nama, merk, seri, tahun, b_bakar, harga, gambar) VALUES ('$name', '$merk', '$seriesInput', '$yearInput', '$fuelInput', '$priceInput', '$filePath')";
+
+        $fuel = "";
+        if ($fuelInput == 1) {
+            $fuel = "Gasoline";
+        } else if ($fuelInput == 2) {
+            $fuel = "Diesel";
+        } else {
+            $fuel = "Eletric";
+        }
+
+        $sql = "INSERT INTO tb_katalog_mobil (nama, merk, seri, tahun, b_bakar, harga, gambar) VALUES ('$name', '$merk', '$seriesInput', '$yearInput', '$fuel', '$priceInput', '$filePath')";
 
         if (mysqli_query($conn, $sql)) {
             // Image uploaded and data saved successfully

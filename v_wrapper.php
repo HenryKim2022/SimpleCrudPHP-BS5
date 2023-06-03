@@ -29,11 +29,34 @@ if (isset($_POST['action'])) {
             </div>
             <div class="mb-3">
                 <label for="yearInput" class="form-label">Year</label>
-                <input type="text" class="form-control" id="yearInput" name="yearInput" placeholder="Enter year" value="<?= $res['tahun'] ?>" required>
+                <input type="number" class="form-control" id="yearInput" name="yearInput" placeholder="Enter year" min="1900" max="2099" value="<?= $res['tahun'] ?>" required>
             </div>
             <div class="mb-3">
-                <label for="fuelInput" class="form-label">Fuel</label>
-                <input type="text" class="form-control" id="fuelInput" name="fuelInput" placeholder="Enter fuel" value="<?= $res['b_bakar'] ?>" required>
+                <label for="inputFuel">Fuel</label>
+                <div class="input-group">
+                    <select class="form-control" id="fuelInput" name="fuelInput" required>
+                        <?php if ($res['b_bakar'] == 1) { ?>
+                            <option value="1" selected>Gasoline</option>
+                        <?php } else { ?>
+                            <option value="1">Gasoline</option>
+                        <?php } ?>
+                        <?php if ($res['b_bakar'] == 2) { ?>
+                            <option value="2" selected>Diesel</option>
+                        <?php } else { ?>
+                            <option value="2">Diesel</option>
+                        <?php } ?>
+                        <?php if ($res['b_bakar'] == 3) { ?>
+                            <option value="3" selected>Electric</option>
+                        <?php } else { ?>
+                            <option value="3">Electric</option>
+                        <?php } ?>
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" onclick="toggleSelectOptions()">
+                            <i id="arrowIcon" class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="priceInput" class="form-label">Price</label>
@@ -101,7 +124,16 @@ if (isset($_POST['action'])) {
             </div>
             <div class="mb-3">
                 <label for="fuelInput" class="form-label">Fuel</label>
-                <input type="text" class="form-control" id="fuelInput" name="fuelInput" placeholder="Enter fuel" value="<?= $res['b_bakar'] ?>" readonly>
+                <?php
+                $fuel = "";
+                if ($res['b_bakar'] == 1) {
+                    $fuel = "Gasoline";
+                } else if ($res['b_bakar'] == 2) {
+                    $fuel = "Diesel";
+                } else if ($res['b_bakar'] == 3) {
+                    $fuel = "Eletric";
+                } ?>
+                <input type="text" class="form-control" id="fuelInput" name="fuelInput" placeholder="Enter fuel" value="<?= $fuel ?>" readonly>
             </div>
             <div class="mb-3">
                 <label for="priceInput" class="form-label">Price</label>
