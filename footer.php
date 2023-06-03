@@ -118,8 +118,12 @@
                 null,
                 null,
                 null,
+                null,
+                null,
+                null,
+                null,
                 {
-                    "width": "6%"
+                    "width": "8%"
                 }
             ],
             "buttons": [{

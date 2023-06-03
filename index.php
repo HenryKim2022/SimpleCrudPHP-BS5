@@ -28,10 +28,35 @@
                         <table id="dataListTable" class="table table-bordered" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th scope="col" class="align-middle text-center">NO.</th>
+                                    <th>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="sortOrder" id="ascending" value="asc" checked>
+                                            <label class="form-check-label" for="ascending">
+                                                Ascending
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="sortOrder" id="descending" value="desc">
+                                            <label class="form-check-label" for="descending">
+                                                Descending
+                                            </label>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <button id="sortButton" class="btn btn-primary">Go</button>
+                                    </th>
+                                </tr>
+
+                                <tr>
+                                    <th scope="col" class="align-middle text-center">No.</th>
                                     <th scope="col" class="align-middle">Name</th>
-                                    <th scope="col" class="align-middle">Nim</th>
-                                    <th scope="col" class="align-middle">Address</th>
+                                    <th scope="col" class="align-middle">Merk</th>
+                                    <th scope="col" class="align-middle">Series</th>
+                                    <th scope="col" class="align-middle">Year</th>
+                                    <th scope="col" class="align-middle">Fuel</th>
+                                    <th scope="col" class="align-middle">Price</th>
+                                    <th scope="col" class="align-middle">Image</th>
                                     <th scope="col" class="align-middle text-center">Actions</th>
                                 </tr>
                             </thead>
@@ -40,19 +65,33 @@
 
                                 include "conn.php";
                                 $i = 1; {
-                                    $data = mysqli_query($conn, "SELECT * FROM tbl_mahasiswa");
+                                    $data = mysqli_query($conn, "SELECT * FROM tb_katalog_mobil");
                                     while ($d = mysqli_fetch_assoc($data)) :
 
                                 ?>
                                         <tr>
                                             <th scope="row" class="align-middle text-center"><?= $i++ ?></th>
-                                            <td class="align-middle text-left"><?= $d['nama_mhs']; ?></td>
-                                            <td class="align-middle text-left"><?= $d['nrp']; ?></td>
-                                            <td class="align-middle text-left"><?= $d['alamat']; ?></td>
+                                            <td class="align-middle text-left"><?= $d['nama']; ?></td>
+                                            <td class="align-middle text-left"><?= $d['merk']; ?></td>
+                                            <td class="align-middle text-left"><?= $d['seri']; ?></td>
+                                            <td class="align-middle text-left"><?= $d['tahun']; ?></td>
+                                            <td class="align-middle text-left"><?= $d['b_bakar']; ?></td>
+                                            <td class="align-middle text-left"><?= convert2idr($d['harga']); ?></td>
+
+                                            <td class="align-middle text-left">
+                                                <?php if ($d['gambar']) { ?>
+                                                    <img src="<?= $d['gambar']; ?>" alt="Image" width="100">
+                                                <?php } else { ?>
+                                                    <img src="<?= 'img/no_image.jpg' ?>" alt="Image" width="100">
+                                                <?php } ?>
+
+                                            </td>
                                             <td class="align-middle align-content-sm-between justify-content-center">
                                                 <div class="d-flex align-content-sm-between justify-content-center align-middle">
                                                     <a href="#" class="view_data btn btn-sm btn-warning mr-2" id="<?= $d['id']; ?>" data-bs-toggle="modal" data-bs-target="#editDataModal"><i class="fad fa-edit"></i></a>
                                                     <a href="del_data.php?id=<?php echo $d['id']; ?>" class="btn btn-sm btn-danger mr-2" onclick="return confirm('Apakah Yakin Ingin Menghapus Data?')"><i class="fad fa-trash"></i></a>
+                                                    <a href="#" class="show_data btn btn-sm btn-primary mr-2" id="<?= $d['id']; ?>" data-bs-toggle="modal" data-bs-target="#showDataModal"><i class="fad fa-info"></i></a>
+
                                                 </div>
                                             </td>
                                         </tr>
@@ -62,6 +101,26 @@
                                 } ?>
                             </tbody>
                         </table>
+
+
+                        <script>
+                            document.getElementById('sortButton').addEventListener('click', function() {
+                                var table = document.getElementById('dataListTable');
+                                var sortOrder = document.querySelector('input[name="sortOrder"]:checked').value;
+                                var tbody = table.querySelector('tbody');
+                                var rows = Array.from(tbody.getElementsByTagName('tr'));
+
+                                rows.sort(function(a, b) {
+                                    var aValue = a.cells[2].textContent;
+                                    var bValue = b.cells[2].textContent;
+                                    return sortOrder === 'asc' ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+                                });
+
+                                rows.forEach(function(row) {
+                                    tbody.appendChild(row);
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
@@ -88,18 +147,34 @@
                         </div>
                         <div class="modal-body">
 
-                            <form method="post" action="add_data.php">
+                            <form method="post" action="add_data.php" enctype="multipart/form-data">
                                 <div class="mb-3">
                                     <label for="nameInput" class="form-label">Name</label>
                                     <input type="text" class="form-control" id="nameInput" name="nameInput" placeholder="Enter name" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="nimInput" class="form-label">Nim</label>
-                                    <input type="text" class="form-control" id="nimInput" name="nimInput" placeholder="Enter nim" required>
+                                    <label for="merkInput" class="form-label">Merk</label>
+                                    <input type="text" class="form-control" id="merkInput" name="merkInput" placeholder="Enter merk" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="addrInput" class="form-label">Address</label>
-                                    <input type="text" class="form-control" id="addrInput" name="addrInput" placeholder="Enter address" required>
+                                    <label for="seriesInput" class="form-label">Series</label>
+                                    <input type="text" class="form-control" id="seriesInput" name="seriesInput" placeholder="Enter series" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="yearInput" class="form-label">Year</label>
+                                    <input type="text" class="form-control" id="yearInput" name="yearInput" placeholder="Enter year" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="fuelInput" class="form-label">Fuel</label>
+                                    <input type="text" class="form-control" id="fuelInput" name="fuelInput" placeholder="Enter fuel" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="priceInput" class="form-label">Price</label>
+                                    <input type="number" class="form-control" id="priceInput" name="priceInput" placeholder="Enter price" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="imageInput" class="form-label">Upload Image</label>
+                                    <input type="file" class="form-control" id="imageInput" name="imageInput" accept="image/*">
                                 </div>
                         </div>
                         <div class="modal-footer">
@@ -120,6 +195,24 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body" id="datatoedit">
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ShowData Modal -->
+            <div class="modal fade" id="showDataModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Data Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="datatoshow">
 
 
                         </div>
@@ -222,11 +315,33 @@
                 url: 'v_wrapper.php',
                 method: 'post',
                 data: {
-                    id: idtoedit
+                    id: idtoedit,
+                    action: "EDIT"
                 },
                 success: function(data) {
                     $('#datatoedit').html(data)
                     $('#editDataModal').modal('show');
+                }
+            })
+
+        })
+    </script>
+
+
+
+    <script type="text/javascript">
+        $('.show_data').click(function() {
+            var idtoshow = $(this).attr('id');
+            $.ajax({
+                url: 'v_wrapper.php',
+                method: 'post',
+                data: {
+                    id: idtoshow,
+                    action: "SHOW"
+                },
+                success: function(data) {
+                    $('#datatoshow').html(data)
+                    $('#showDataModal').modal('show');
                 }
             })
 

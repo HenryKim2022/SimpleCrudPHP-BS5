@@ -30,7 +30,6 @@
                         <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
                         <input type="text" name="nama" value="<?php echo $d['nama_mhs']; ?>">
                     </td>
-
                 </tr>
                 <tr>
                     <td>NRP</td>

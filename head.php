@@ -1,6 +1,6 @@
 <?php include "site_meta.php" ?>
 <?php $namaTabel = $Site_Purpose ?>
-
+<?php include "indorupiah.php" ?>
 
 <!DOCTYPE html>
 <html lang="en">

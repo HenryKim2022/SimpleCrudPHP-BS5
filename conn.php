@@ -4,7 +4,7 @@ include "get_baseurl.php";
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "mahasiswa";
+$dbname = "db_mobil";
 
 // Create a connection
 $conn = new mysqli($servername, $username, $password, $dbname);
