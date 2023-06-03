@@ -137,7 +137,7 @@ if (isset($_POST['action'])) {
             </div>
             <div class="mb-3">
                 <label for="priceInput" class="form-label">Price</label>
-                <input type="text" class="form-control" id="priceInput" name="priceInput" placeholder="Enter price" value="<?= $res['harga'] ?>" readonly>
+                <input type="text" class="form-control" id="priceInput" name="priceInput" placeholder="Enter price" value="<?= convert2idr($res['harga']); ?>" readonly>
             </div>
             <div class="mb-3">
                 <label>Image</label>
