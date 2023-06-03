@@ -103,8 +103,8 @@
 
 
             <ul class="navbar-nav">
-                <li class="nav-item active"> <a class="nav-link" href="<?= $Base_Url ?>">Home </a> </li>
-                <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutModal"> About </a></li>
+                <li class="nav-item active"> <a class="nav-link" href="<?= $Base_Url ?>"><i class="fad fa-home mr-2"></i> Home </a> </li>
+                <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutModal"><i class="fad fa-address-card mr-2"></i> About </a></li>
                 <!-- <li class="nav-item"><a class="nav-link" href="#"> Data Manage </a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"> Treeview menu </a>
