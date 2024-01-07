@@ -15,7 +15,19 @@ if (isset($_FILES['imageInput']) && $_FILES['imageInput']['error'] === UPLOAD_ER
     $uploadDir = 'uploads/'; // Directory to save uploaded images
     $fileName = $imageInput['name'];
     $filePath = $uploadDir . $name . "_" .  $fileName;
-
+	
+	// Check if the uploads directory already exists
+	if (!is_dir($uploadDir)) {
+		// Create the directory
+		if (mkdir($uploadDir, 0777, true)) {
+			//echo 'Directory created successfully.';
+		} else {
+			//echo 'Failed to create directory.';
+		}
+	} else {
+		//echo 'Directory already exists.';
+	}    
+    
     // Move the uploaded file to the specified directory
     if (move_uploaded_file($_FILES['imageInput']['tmp_name'], $filePath)) {
         // Save the image path to the database
